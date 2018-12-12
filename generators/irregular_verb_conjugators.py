@@ -13,74 +13,74 @@ if __name__ == "__main__":
         jm_dict = json.load(data_file)
 
     svt = {
-        u"します": "shimasu",
-        u"しない": "shinai",
-        u"しません": "shimasen",
-        u"した": "shita",
-        u"しました": "shimashita",
-        u"しなかった": "shinakatta",
-        u"しませんでした": "shimasen deshita",
-        u"して": "shite",
-        u"しまして": "shimashite",
-        u"しないで": "shinaide",
-        u"しませんで": "shimasende",
-        u"しよう": "shiyou",
-        u"しましょう": "shimashou",
-        u"しい": "shii",
-        u"しろ": "shiro",
-        u"しなさい": "shinasai",
-        u"しなさるな": "shinasaruna",
+        "します": "shimasu",
+        "しない": "shinai",
+        "しません": "shimasen",
+        "した": "shita",
+        "しました": "shimashita",
+        "しなかった": "shinakatta",
+        "しませんでした": "shimasen deshita",
+        "して": "shite",
+        "しまして": "shimashite",
+        "しないで": "shinaide",
+        "しませんで": "shimasende",
+        "しよう": "shiyou",
+        "しましょう": "shimashou",
+        "しい": "shii",
+        "しろ": "shiro",
+        "しなさい": "shinasai",
+        "しなさるな": "shinasaruna",
     }
 
     suru_conjugated_mappings = OrderedDict({})
-    for k in jm_dict.keys():
+    for k in list(jm_dict.keys()):
         if jm_dict[k]["w_type"] == "suru verb":
-            for vk in svt.keys():
+            for vk in list(svt.keys()):
                 suru_conjugated_mappings[k[:-2] + vk] = {
                     "romaji": jm_dict[k]["romaji"][:-4].strip() + " " + svt[vk].strip(),
                     "w_type": "conjugated suru verb"
                 }
 
     kvt = {
-        u"来ます": "kimasu",
-        u"来ない": "konai",
-        u"来ません": "kimasen",
-        u"来た": "kita",
-        u"来ました": "kimashita",
-        u"来なかった": "konakatta",
-        u"来ませんでした": "kimasen deshita",
-        u"来て": "kite",
-        u"来まして": "kimashite",
-        u"来ないで": "konaide",
-        u"来ませんで": "kimasende",
-        u"来よう": "koyou",
-        u"来ましょう": "kimashou",
-        u"来い": "koi",
-        u"来なさい": "kinasai",
-        u"来なさるな": "kinasaruna",
+        "来ます": "kimasu",
+        "来ない": "konai",
+        "来ません": "kimasen",
+        "来た": "kita",
+        "来ました": "kimashita",
+        "来なかった": "konakatta",
+        "来ませんでした": "kimasen deshita",
+        "来て": "kite",
+        "来まして": "kimashite",
+        "来ないで": "konaide",
+        "来ませんで": "kimasende",
+        "来よう": "koyou",
+        "来ましょう": "kimashou",
+        "来い": "koi",
+        "来なさい": "kinasai",
+        "来なさるな": "kinasaruna",
 
-        u"來ます": "kimasu",
-        u"來ない": "konai",
-        u"來ません": "kimasen",
-        u"來た": "kita",
-        u"來ました": "kimashita",
-        u"來なかった": "konakatta",
-        u"來ませんでした": "kimasen deshita",
-        u"來て": "kite",
-        u"來まして": "kimashite",
-        u"來ないで": "konaide",
-        u"來ませんで": "kimasende",
-        u"來よう": "koyou",
-        u"來ましょう": "kimashou",
-        u"來い": "koi",
-        u"來なさい": "kinasai",
-        u"來なさるな": "kinasaruna"
+        "來ます": "kimasu",
+        "來ない": "konai",
+        "來ません": "kimasen",
+        "來た": "kita",
+        "來ました": "kimashita",
+        "來なかった": "konakatta",
+        "來ませんでした": "kimasen deshita",
+        "來て": "kite",
+        "來まして": "kimashite",
+        "來ないで": "konaide",
+        "來ませんで": "kimasende",
+        "來よう": "koyou",
+        "來ましょう": "kimashou",
+        "來い": "koi",
+        "來なさい": "kinasai",
+        "來なさるな": "kinasaruna"
     }
 
     kuru_conjugated_mappings = OrderedDict({})
-    for k in jm_dict.keys():
+    for k in list(jm_dict.keys()):
         if jm_dict[k]["w_type"] == "kuru verb":
-            for vk in kvt.keys():
+            for vk in list(kvt.keys()):
                 kuru_conjugated_mappings[k[:-2] + vk] = {
                     "romaji": jm_dict[k]["romaji"][:-4].strip() + " " + kvt[vk].strip(),
                     "w_type": "conjugated kuru verb"

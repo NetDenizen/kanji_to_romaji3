@@ -12,308 +12,308 @@ from generators.godan_verb_conjugators import conjugate_godan_plain_te_form, con
 
 class TestGodanVerbConjugators(unittest.TestCase):
     def setUp(self):
-        print "\nStarting " + self.__module__ + ": " + self._testMethodName
+        print("\nStarting " + self.__module__ + ": " + self._testMethodName)
 
     def test_polite_present_affirmative(self):
         godan_expected = {
-            u"会う": (u"会います", "aimasu"),
-            u"待つ": (u"待ちます", "machimasu"),
-            u"撮る": (u"撮ります", "torimasu"),
-            u"読む": (u"読みます", "yomimasu"),
-            u"遊ぶ": (u"遊びます", "asobimasu"),
-            u"死ぬ": (u"死にます", "shinimasu"),
-            u"書く": (u"書きます", "kakimasu"),
-            u"行く": (u"行きます", "ikimasu"),
-            u"泳ぐ": (u"泳ぎます", "oyogimasu"),
-            u"話す": (u"話します", "hanashimasu")
+            "会う": ("会います", "aimasu"),
+            "待つ": ("待ちます", "machimasu"),
+            "撮る": ("撮ります", "torimasu"),
+            "読む": ("読みます", "yomimasu"),
+            "遊ぶ": ("遊びます", "asobimasu"),
+            "死ぬ": ("死にます", "shinimasu"),
+            "書く": ("書きます", "kakimasu"),
+            "行く": ("行きます", "ikimasu"),
+            "泳ぐ": ("泳ぎます", "oyogimasu"),
+            "話す": ("話します", "hanashimasu")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_polite_present_affirmative(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_plain_negative(self):
         godan_expected = {
-            u"会う": (u"会わない", "awanai"),
-            u"待つ": (u"待たない", "matanai"),
-            u"撮る": (u"撮らない", "toranai"),
-            u"読む": (u"読まない", "yomanai"),
-            u"遊ぶ": (u"遊ばない", "asobanai"),
-            u"死ぬ": (u"死なない", "shinanai"),
-            u"書く": (u"書かない", "kakanai"),
-            u"行く": (u"行かない", "ikanai"),
-            u"泳ぐ": (u"泳がない", "oyoganai"),
-            u"話す": (u"話さない", "hanasanai")
+            "会う": ("会わない", "awanai"),
+            "待つ": ("待たない", "matanai"),
+            "撮る": ("撮らない", "toranai"),
+            "読む": ("読まない", "yomanai"),
+            "遊ぶ": ("遊ばない", "asobanai"),
+            "死ぬ": ("死なない", "shinanai"),
+            "書く": ("書かない", "kakanai"),
+            "行く": ("行かない", "ikanai"),
+            "泳ぐ": ("泳がない", "oyoganai"),
+            "話す": ("話さない", "hanasanai")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_plain_negative(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_polite_present_negative(self):
         godan_expected = {
-            u"会う": (u"会いません", "aimasen"),
-            u"待つ": (u"待ちません", "machimasen"),
-            u"撮る": (u"撮りません", "torimasen"),
-            u"読む": (u"読みません", "yomimasen"),
-            u"遊ぶ": (u"遊びません", "asobimasen"),
-            u"死ぬ": (u"死にません", "shinimasen"),
-            u"書く": (u"書きません", "kakimasen"),
-            u"行く": (u"行きません", "ikimasen"),
-            u"泳ぐ": (u"泳ぎません", "oyogimasen"),
-            u"話す": (u"話しません", "hanashimasen")
+            "会う": ("会いません", "aimasen"),
+            "待つ": ("待ちません", "machimasen"),
+            "撮る": ("撮りません", "torimasen"),
+            "読む": ("読みません", "yomimasen"),
+            "遊ぶ": ("遊びません", "asobimasen"),
+            "死ぬ": ("死にません", "shinimasen"),
+            "書く": ("書きません", "kakimasen"),
+            "行く": ("行きません", "ikimasen"),
+            "泳ぐ": ("泳ぎません", "oyogimasen"),
+            "話す": ("話しません", "hanashimasen")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_polite_present_negative(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_plain_past(self):
         godan_expected = {
-            u"会う": (u"会った", "atta"),
-            u"待つ": (u"待った", "matta"),
-            u"撮る": (u"撮った", "totta"),
-            u"読む": (u"読んだ", "yonda"),
-            u"遊ぶ": (u"遊んだ", "asonda"),
-            u"死ぬ": (u"死んだ", "shinda"),
-            u"書く": (u"書いた", "kaita"),
-            u"行く": (u"行った", "itta"),
-            u"泳ぐ": (u"泳いだ", "oyoida"),
-            u"話す": (u"話した", "hanashita")
+            "会う": ("会った", "atta"),
+            "待つ": ("待った", "matta"),
+            "撮る": ("撮った", "totta"),
+            "読む": ("読んだ", "yonda"),
+            "遊ぶ": ("遊んだ", "asonda"),
+            "死ぬ": ("死んだ", "shinda"),
+            "書く": ("書いた", "kaita"),
+            "行く": ("行った", "itta"),
+            "泳ぐ": ("泳いだ", "oyoida"),
+            "話す": ("話した", "hanashita")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_plain_past(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_polite_past(self):
         godan_expected = {
-            u"会う": (u"会いました", "aimashita"),
-            u"待つ": (u"待ちました", "machimashita"),
-            u"撮る": (u"撮りました", "torimashita"),
-            u"読む": (u"読みました", "yomimashita"),
-            u"遊ぶ": (u"遊びました", "asobimashita"),
-            u"死ぬ": (u"死にました", "shinimashita"),
-            u"書く": (u"書きました", "kakimashita"),
-            u"行く": (u"行きました", "ikimashita"),
-            u"泳ぐ": (u"泳ぎました", "oyogimashita"),
-            u"話す": (u"話しました", "hanashimashita")
+            "会う": ("会いました", "aimashita"),
+            "待つ": ("待ちました", "machimashita"),
+            "撮る": ("撮りました", "torimashita"),
+            "読む": ("読みました", "yomimashita"),
+            "遊ぶ": ("遊びました", "asobimashita"),
+            "死ぬ": ("死にました", "shinimashita"),
+            "書く": ("書きました", "kakimashita"),
+            "行く": ("行きました", "ikimashita"),
+            "泳ぐ": ("泳ぎました", "oyogimashita"),
+            "話す": ("話しました", "hanashimashita")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_polite_past(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_plain_past_negative(self):
         godan_expected = {
-            u"会う": (u"会わなかった", "awanakatta"),
-            u"待つ": (u"待たなかった", "matanakatta"),
-            u"撮る": (u"撮らなかった", "toranakatta"),
-            u"読む": (u"読まなかった", "yomanakatta"),
-            u"遊ぶ": (u"遊ばなかった", "asobanakatta"),
-            u"死ぬ": (u"死ななかった", "shinanakatta"),
-            u"書く": (u"書かなかった", "kakanakatta"),
-            u"行く": (u"行かなかった", "ikanakatta"),
-            u"泳ぐ": (u"泳がなかった", "oyoganakatta"),
-            u"話す": (u"話さなかった", "hanasanakatta")
+            "会う": ("会わなかった", "awanakatta"),
+            "待つ": ("待たなかった", "matanakatta"),
+            "撮る": ("撮らなかった", "toranakatta"),
+            "読む": ("読まなかった", "yomanakatta"),
+            "遊ぶ": ("遊ばなかった", "asobanakatta"),
+            "死ぬ": ("死ななかった", "shinanakatta"),
+            "書く": ("書かなかった", "kakanakatta"),
+            "行く": ("行かなかった", "ikanakatta"),
+            "泳ぐ": ("泳がなかった", "oyoganakatta"),
+            "話す": ("話さなかった", "hanasanakatta")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_plain_past_negative(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_polite_past_negative(self):
         godan_expected = {
-            u"会う": (u"会いませんでした", "aimasen deshita"),
-            u"待つ": (u"待ちませんでした", "machimasen deshita"),
-            u"撮る": (u"撮りませんでした", "torimasen deshita"),
-            u"読む": (u"読みませんでした", "yomimasen deshita"),
-            u"遊ぶ": (u"遊びませんでした", "asobimasen deshita"),
-            u"死ぬ": (u"死にませんでした", "shinimasen deshita"),
-            u"書く": (u"書きませんでした", "kakimasen deshita"),
-            u"行く": (u"行きませんでした", "ikimasen deshita"),
-            u"泳ぐ": (u"泳ぎませんでした", "oyogimasen deshita"),
-            u"話す": (u"話しませんでした", "hanashimasen deshita")
+            "会う": ("会いませんでした", "aimasen deshita"),
+            "待つ": ("待ちませんでした", "machimasen deshita"),
+            "撮る": ("撮りませんでした", "torimasen deshita"),
+            "読む": ("読みませんでした", "yomimasen deshita"),
+            "遊ぶ": ("遊びませんでした", "asobimasen deshita"),
+            "死ぬ": ("死にませんでした", "shinimasen deshita"),
+            "書く": ("書きませんでした", "kakimasen deshita"),
+            "行く": ("行きませんでした", "ikimasen deshita"),
+            "泳ぐ": ("泳ぎませんでした", "oyogimasen deshita"),
+            "話す": ("話しませんでした", "hanashimasen deshita")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_polite_past_negative(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_plain_te_form(self):
         godan_expected = {
-            u"会う": (u"会って", "atte"),
-            u"待つ": (u"待って", "matte"),
-            u"撮る": (u"撮って", "totte"),
-            u"読む": (u"読んで", "yonde"),
-            u"遊ぶ": (u"遊んで", "asonde"),
-            u"死ぬ": (u"死んで", "shinde"),
-            u"書く": (u"書いて", "kaite"),
-            u"行く": (u"行って", "itte"),
-            u"泳ぐ": (u"泳いで", "oyoide"),
-            u"話す": (u"話して", "hanashite")
+            "会う": ("会って", "atte"),
+            "待つ": ("待って", "matte"),
+            "撮る": ("撮って", "totte"),
+            "読む": ("読んで", "yonde"),
+            "遊ぶ": ("遊んで", "asonde"),
+            "死ぬ": ("死んで", "shinde"),
+            "書く": ("書いて", "kaite"),
+            "行く": ("行って", "itte"),
+            "泳ぐ": ("泳いで", "oyoide"),
+            "話す": ("話して", "hanashite")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_plain_te_form(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_polite_te_form(self):
         godan_expected = {
-            u"会う": (u"会いまして", "aimashite"),
-            u"待つ": (u"待ちまして", "machimashite"),
-            u"撮る": (u"撮りまして", "torimashite"),
-            u"読む": (u"読みまして", "yomimashite"),
-            u"遊ぶ": (u"遊びまして", "asobimashite"),
-            u"死ぬ": (u"死にまして", "shinimashite"),
-            u"書く": (u"書きまして", "kakimashite"),
-            u"行く": (u"行きまして", "ikimashite"),
-            u"泳ぐ": (u"泳ぎまして", "oyogimashite"),
-            u"話す": (u"話しまして", "hanashimashite")
+            "会う": ("会いまして", "aimashite"),
+            "待つ": ("待ちまして", "machimashite"),
+            "撮る": ("撮りまして", "torimashite"),
+            "読む": ("読みまして", "yomimashite"),
+            "遊ぶ": ("遊びまして", "asobimashite"),
+            "死ぬ": ("死にまして", "shinimashite"),
+            "書く": ("書きまして", "kakimashite"),
+            "行く": ("行きまして", "ikimashite"),
+            "泳ぐ": ("泳ぎまして", "oyogimashite"),
+            "話す": ("話しまして", "hanashimashite")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_polite_te_form(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_plain_te_form_negative(self):
         godan_expected = {
-            u"会う": (u"会わないで", "awanaide"),
-            u"待つ": (u"待たないで", "matanaide"),
-            u"撮る": (u"撮らないで", "toranaide"),
-            u"読む": (u"読まないで", "yomanaide"),
-            u"遊ぶ": (u"遊ばないで", "asobanaide"),
-            u"死ぬ": (u"死なないで", "shinanaide"),
-            u"書く": (u"書かないで", "kakanaide"),
-            u"行く": (u"行かないで", "ikanaide"),
-            u"泳ぐ": (u"泳がないで", "oyoganaide"),
-            u"話す": (u"話さないで", "hanasanaide")
+            "会う": ("会わないで", "awanaide"),
+            "待つ": ("待たないで", "matanaide"),
+            "撮る": ("撮らないで", "toranaide"),
+            "読む": ("読まないで", "yomanaide"),
+            "遊ぶ": ("遊ばないで", "asobanaide"),
+            "死ぬ": ("死なないで", "shinanaide"),
+            "書く": ("書かないで", "kakanaide"),
+            "行く": ("行かないで", "ikanaide"),
+            "泳ぐ": ("泳がないで", "oyoganaide"),
+            "話す": ("話さないで", "hanasanaide")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_plain_te_form_negative(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_polite_te_form_negative(self):
         godan_expected = {
-            u"会う": (u"会いませんで", "aimasende"),
-            u"待つ": (u"待ちませんで", "machimasende"),
-            u"撮る": (u"撮りませんで", "torimasende"),
-            u"読む": (u"読みませんで", "yomimasende"),
-            u"遊ぶ": (u"遊びませんで", "asobimasende"),
-            u"死ぬ": (u"死にませんで", "shinimasende"),
-            u"書く": (u"書きませんで", "kakimasende"),
-            u"行く": (u"行きませんで", "ikimasende"),
-            u"泳ぐ": (u"泳ぎませんで", "oyogimasende"),
-            u"話す": (u"話しませんで", "hanashimasende")
+            "会う": ("会いませんで", "aimasende"),
+            "待つ": ("待ちませんで", "machimasende"),
+            "撮る": ("撮りませんで", "torimasende"),
+            "読む": ("読みませんで", "yomimasende"),
+            "遊ぶ": ("遊びませんで", "asobimasende"),
+            "死ぬ": ("死にませんで", "shinimasende"),
+            "書く": ("書きませんで", "kakimasende"),
+            "行く": ("行きませんで", "ikimasende"),
+            "泳ぐ": ("泳ぎませんで", "oyogimasende"),
+            "話す": ("話しませんで", "hanashimasende")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_polite_te_form_negative(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_plain_volitional(self):
         godan_expected = {
-            u"会う": (u"会おう", "aou"),
-            u"待つ": (u"待とう", "matou"),
-            u"撮る": (u"撮ろう", "torou"),
-            u"読む": (u"読もう", "yomou"),
-            u"遊ぶ": (u"遊ぼう", "asobou"),
-            u"死ぬ": (u"死のう", "shinou"),
-            u"書く": (u"書こう", "kakou"),
-            u"行く": (u"行こう", "ikou"),
-            u"泳ぐ": (u"泳ごう", "oyogou"),
-            u"話す": (u"話そう", "hanasou")
+            "会う": ("会おう", "aou"),
+            "待つ": ("待とう", "matou"),
+            "撮る": ("撮ろう", "torou"),
+            "読む": ("読もう", "yomou"),
+            "遊ぶ": ("遊ぼう", "asobou"),
+            "死ぬ": ("死のう", "shinou"),
+            "書く": ("書こう", "kakou"),
+            "行く": ("行こう", "ikou"),
+            "泳ぐ": ("泳ごう", "oyogou"),
+            "話す": ("話そう", "hanasou")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_plain_volitional(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_polite_volitional(self):
         godan_expected = {
-            u"会う": (u"会いましょう", "aimashou"),
-            u"待つ": (u"待ちましょう", "machimashou"),
-            u"撮る": (u"撮りましょう", "torimashou"),
-            u"読む": (u"読みましょう", "yomimashou"),
-            u"遊ぶ": (u"遊びましょう", "asobimashou"),
-            u"死ぬ": (u"死にましょう", "shinimashou"),
-            u"書く": (u"書きましょう", "kakimashou"),
-            u"行く": (u"行きましょう", "ikimashou"),
-            u"泳ぐ": (u"泳ぎましょう", "oyogimashou"),
-            u"話す": (u"話しましょう", "hanashimashou")
+            "会う": ("会いましょう", "aimashou"),
+            "待つ": ("待ちましょう", "machimashou"),
+            "撮る": ("撮りましょう", "torimashou"),
+            "読む": ("読みましょう", "yomimashou"),
+            "遊ぶ": ("遊びましょう", "asobimashou"),
+            "死ぬ": ("死にましょう", "shinimashou"),
+            "書く": ("書きましょう", "kakimashou"),
+            "行く": ("行きましょう", "ikimashou"),
+            "泳ぐ": ("泳ぎましょう", "oyogimashou"),
+            "話す": ("話しましょう", "hanashimashou")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_polite_volitional(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_plain_imperative(self):
         godan_expected = {
-            u"会う": (u"会え", "ae"),
-            u"待つ": (u"待て", "mate"),
-            u"撮る": (u"撮れ", "tore"),
-            u"読む": (u"読め", "yome"),
-            u"遊ぶ": (u"遊べ", "asobe"),
-            u"死ぬ": (u"死ね", "shine"),
-            u"書く": (u"書け", "kake"),
-            u"行く": (u"行け", "ike"),
-            u"泳ぐ": (u"泳げ", "oyoge"),
-            u"話す": (u"話せ", "hanase")
+            "会う": ("会え", "ae"),
+            "待つ": ("待て", "mate"),
+            "撮る": ("撮れ", "tore"),
+            "読む": ("読め", "yome"),
+            "遊ぶ": ("遊べ", "asobe"),
+            "死ぬ": ("死ね", "shine"),
+            "書く": ("書け", "kake"),
+            "行く": ("行け", "ike"),
+            "泳ぐ": ("泳げ", "oyoge"),
+            "話す": ("話せ", "hanase")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_plain_imperative(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_polite_imperative(self):
         godan_expected = {
-            u"会う": (u"会いなさい", "ainasai"),
-            u"待つ": (u"待ちなさい", "machinasai"),
-            u"撮る": (u"撮りなさい", "torinasai"),
-            u"読む": (u"読みなさい", "yominasai"),
-            u"遊ぶ": (u"遊びなさい", "asobinasai"),
-            u"死ぬ": (u"死になさい", "shininasai"),
-            u"書く": (u"書きなさい", "kakinasai"),
-            u"行く": (u"行きなさい", "ikinasai"),
-            u"泳ぐ": (u"泳ぎなさい", "oyoginasai"),
-            u"話す": (u"話しなさい", "hanashinasai")
+            "会う": ("会いなさい", "ainasai"),
+            "待つ": ("待ちなさい", "machinasai"),
+            "撮る": ("撮りなさい", "torinasai"),
+            "読む": ("読みなさい", "yominasai"),
+            "遊ぶ": ("遊びなさい", "asobinasai"),
+            "死ぬ": ("死になさい", "shininasai"),
+            "書く": ("書きなさい", "kakinasai"),
+            "行く": ("行きなさい", "ikinasai"),
+            "泳ぐ": ("泳ぎなさい", "oyoginasai"),
+            "話す": ("話しなさい", "hanashinasai")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_polite_imperative(k)
             self.assertEqual(godan_expected[k], (ck, cr))
 
     def test_polite_imperative_negative(self):
         godan_expected = {
-            u"会う": (u"会いなさるな", "ainasaruna"),
-            u"待つ": (u"待ちなさるな", "machinasaruna"),
-            u"撮る": (u"撮りなさるな", "torinasaruna"),
-            u"読む": (u"読みなさるな", "yominasaruna"),
-            u"遊ぶ": (u"遊びなさるな", "asobinasaruna"),
-            u"死ぬ": (u"死になさるな", "shininasaruna"),
-            u"書く": (u"書きなさるな", "kakinasaruna"),
-            u"行く": (u"行きなさるな", "ikinasaruna"),
-            u"泳ぐ": (u"泳ぎなさるな", "oyoginasaruna"),
-            u"話す": (u"話しなさるな", "hanashinasaruna")
+            "会う": ("会いなさるな", "ainasaruna"),
+            "待つ": ("待ちなさるな", "machinasaruna"),
+            "撮る": ("撮りなさるな", "torinasaruna"),
+            "読む": ("読みなさるな", "yominasaruna"),
+            "遊ぶ": ("遊びなさるな", "asobinasaruna"),
+            "死ぬ": ("死になさるな", "shininasaruna"),
+            "書く": ("書きなさるな", "kakinasaruna"),
+            "行く": ("行きなさるな", "ikinasaruna"),
+            "泳ぐ": ("泳ぎなさるな", "oyoginasaruna"),
+            "話す": ("話しなさるな", "hanashinasaruna")
         }
 
-        for k in godan_expected.keys():
+        for k in list(godan_expected.keys()):
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             ck, cr = conjugate_godan_polite_imperative_negative(k)
             self.assertEqual(godan_expected[k], (ck, cr))

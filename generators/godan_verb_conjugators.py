@@ -18,19 +18,19 @@ def set_global_godan(gr, gtr):
 
 def _godan_i_stem(godan):
     u_i_mapping = {
-        u"う": u"い",
-        u"く": u"き",
-        u"ぐ": u"ぎ",
-        u"す": u"し",
-        u"ず": u"じ",
-        u"つ": u"ち",
-        u"づ": u"ぢ",
-        u"ぬ": u"に",
-        u"ふ": u"ひ",
-        u"ぶ": u"び",
-        u"ぷ": u"ぴ",
-        u"む": u"み",
-        u"る": u"り"
+        "う": "い",
+        "く": "き",
+        "ぐ": "ぎ",
+        "す": "し",
+        "ず": "じ",
+        "つ": "ち",
+        "づ": "ぢ",
+        "ぬ": "に",
+        "ふ": "ひ",
+        "ぶ": "び",
+        "ぷ": "ぴ",
+        "む": "み",
+        "る": "り"
     }
 
     if godan[-1] in u_i_mapping:
@@ -67,19 +67,19 @@ def get_godan_i_stem(godan):
 
 def _godan_a_stem(godan):
     u_a_mapping = {
-        u"う": u"わ",
-        u"く": u"か",
-        u"ぐ": u"が",
-        u"す": u"さ",
-        u"ず": u"ざ",
-        u"つ": u"た",
-        u"づ": u"だ",
-        u"ぬ": u"な",
-        u"ふ": u"は",
-        u"ぶ": u"ば",
-        u"ぷ": u"ぱ",
-        u"む": u"ま",
-        u"る": u"ら"
+        "う": "わ",
+        "く": "か",
+        "ぐ": "が",
+        "す": "さ",
+        "ず": "ざ",
+        "つ": "た",
+        "づ": "だ",
+        "ぬ": "な",
+        "ふ": "は",
+        "ぶ": "ば",
+        "ぷ": "ぱ",
+        "む": "ま",
+        "る": "ら"
     }
 
     if godan[-1] in u_a_mapping:
@@ -116,19 +116,19 @@ def get_godan_a_stem(godan):
 
 def _godan_o_stem(godan):
     u_o_mapping = {
-        u"う": u"お",
-        u"く": u"こ",
-        u"ぐ": u"ご",
-        u"す": u"そ",
-        u"ず": u"ぞ",
-        u"つ": u"と",
-        u"づ": u"ど",
-        u"ぬ": u"の",
-        u"ふ": u"ほ",
-        u"ぶ": u"ぼ",
-        u"ぷ": u"ぽ",
-        u"む": u"も",
-        u"る": u"ろ"
+        "う": "お",
+        "く": "こ",
+        "ぐ": "ご",
+        "す": "そ",
+        "ず": "ぞ",
+        "つ": "と",
+        "づ": "ど",
+        "ぬ": "の",
+        "ふ": "ほ",
+        "ぶ": "ぼ",
+        "ぷ": "ぽ",
+        "む": "も",
+        "る": "ろ"
     }
 
     if godan[-1] in u_o_mapping:
@@ -165,19 +165,19 @@ def get_godan_o_stem(godan):
 
 def _godan_e_stem(godan):
     u_e_mapping = {
-        u"う": u"え",
-        u"く": u"け",
-        u"ぐ": u"げ",
-        u"す": u"せ",
-        u"ず": u"ぜ",
-        u"つ": u"て",
-        u"づ": u"で",
-        u"ぬ": u"ね",
-        u"ふ": u"へ",
-        u"ぶ": u"べ",
-        u"ぷ": u"ぺ",
-        u"む": u"め",
-        u"る": u"れ"
+        "う": "え",
+        "く": "け",
+        "ぐ": "げ",
+        "す": "せ",
+        "ず": "ぜ",
+        "つ": "て",
+        "づ": "で",
+        "ぬ": "ね",
+        "ふ": "へ",
+        "ぶ": "べ",
+        "ぷ": "ぺ",
+        "む": "め",
+        "る": "れ"
     }
 
     if godan[-1] in u_e_mapping:
@@ -213,21 +213,21 @@ def get_godan_e_stem(godan):
 
 def conjugate_godan_polite_present_affirmative(godan):
     i_stem_kana, i_stem_romaji = get_godan_i_stem(godan)
-    conjugated_kana = i_stem_kana + u"ます"
+    conjugated_kana = i_stem_kana + "ます"
     conjugated_romaji = i_stem_romaji + "masu"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_godan_plain_negative(godan):
     a_stem_kana, a_stem_romaji = get_godan_a_stem(godan)
-    conjugated_kana = a_stem_kana + u"ない"
+    conjugated_kana = a_stem_kana + "ない"
     conjugated_romaji = a_stem_romaji + "nai"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_godan_polite_present_negative(godan):
     i_stem_kana, i_stem_romaji = get_godan_i_stem(godan)
-    conjugated_kana = i_stem_kana + u"ません"
+    conjugated_kana = i_stem_kana + "ません"
     conjugated_romaji = i_stem_romaji + "masen"
     return conjugated_kana, conjugated_romaji
 
@@ -238,16 +238,16 @@ def conjugate_godan_plain_past(godan):
     godan_last_syllable_removed_romaji = "".join(godan_romaji.rsplit(godan_last_syllable_romaji, 1))
 
     group_mapping = {
-        u"く": (u"いた", "ita"),
-        u"ぐ": (u"いだ", "ida"),
-        u"す": (u"した", "shita"),
+        "く": ("いた", "ita"),
+        "ぐ": ("いだ", "ida"),
+        "す": ("した", "shita"),
     }
 
-    group_mapping.update(dict.fromkeys([u"う", u"つ", u"る"], (u"った", "tta")))
-    group_mapping.update(dict.fromkeys([u"む", u"ぶ", u"ぬ"], (u"んだ", "nda")))
+    group_mapping.update(dict.fromkeys(["う", "つ", "る"], ("った", "tta")))
+    group_mapping.update(dict.fromkeys(["む", "ぶ", "ぬ"], ("んだ", "nda")))
 
-    if godan == u"行く":
-        godan_type = u"う"
+    if godan == "行く":
+        godan_type = "う"
     else:
         godan_type = godan[-1]
 
@@ -258,21 +258,21 @@ def conjugate_godan_plain_past(godan):
 
 def conjugate_godan_polite_past(godan):
     i_stem_kana, i_stem_romaji = get_godan_i_stem(godan)
-    conjugated_kana = i_stem_kana + u"ました"
+    conjugated_kana = i_stem_kana + "ました"
     conjugated_romaji = i_stem_romaji + "mashita"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_godan_plain_past_negative(godan):
     i_stem_kana, i_stem_romaji = get_godan_a_stem(godan)
-    conjugated_kana = i_stem_kana + u"なかった"
+    conjugated_kana = i_stem_kana + "なかった"
     conjugated_romaji = i_stem_romaji + "nakatta"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_godan_polite_past_negative(godan):
     i_stem_kana, i_stem_romaji = get_godan_i_stem(godan)
-    conjugated_kana = i_stem_kana + u"ませんでした"
+    conjugated_kana = i_stem_kana + "ませんでした"
     conjugated_romaji = i_stem_romaji + "masen deshita"
     return conjugated_kana, conjugated_romaji
 
@@ -282,17 +282,17 @@ def conjugate_godan_plain_te_form(godan):
     godan_last_syllable_removed = godan[:-1]
     godan_last_syllable_removed_romaji = "".join(godan_romaji.rsplit(godan_last_syllable_romaji, 1))
 
-    if godan == u"行く":
-        godan_type = u"う"
+    if godan == "行く":
+        godan_type = "う"
     else:
         godan_type = godan[-1]
     group_mapping = {
-        u"く": (u"いて", "ite"),
-        u"ぐ": (u"いで", "ide"),
-        u"す": (u"して", "shite"),
+        "く": ("いて", "ite"),
+        "ぐ": ("いで", "ide"),
+        "す": ("して", "shite"),
     }
-    group_mapping.update(dict.fromkeys([u"う", u"つ", u"る"], (u"って", "tte")))
-    group_mapping.update(dict.fromkeys([u"む", u"ぶ", u"ぬ"], (u"んで", "nde")))
+    group_mapping.update(dict.fromkeys(["う", "つ", "る"], ("って", "tte")))
+    group_mapping.update(dict.fromkeys(["む", "ぶ", "ぬ"], ("んで", "nde")))
 
     conjugated_kana = godan_last_syllable_removed + group_mapping[godan_type][0]
     conjugated_romaji = godan_last_syllable_removed_romaji + group_mapping[godan_type][1]
@@ -301,21 +301,21 @@ def conjugate_godan_plain_te_form(godan):
 
 def conjugate_godan_polite_te_form(godan):
     i_stem_kana, i_stem_romaji = get_godan_i_stem(godan)
-    conjugated_kana = i_stem_kana + u"まして"
+    conjugated_kana = i_stem_kana + "まして"
     conjugated_romaji = i_stem_romaji + "mashite"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_godan_plain_te_form_negative(godan):
     a_stem_kana, a_stem_romaji = get_godan_a_stem(godan)
-    conjugated_kana = a_stem_kana + u"ないで"
+    conjugated_kana = a_stem_kana + "ないで"
     conjugated_romaji = a_stem_romaji + "naide"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_godan_polite_te_form_negative(godan):
     i_stem_kana, i_stem_romaji = get_godan_i_stem(godan)
-    conjugated_kana = i_stem_kana + u"ませんで"
+    conjugated_kana = i_stem_kana + "ませんで"
     conjugated_romaji = i_stem_romaji + "masende"
     return conjugated_kana, conjugated_romaji
 
@@ -324,14 +324,14 @@ def conjugate_godan_polite_te_form_negative(godan):
 
 def conjugate_godan_plain_volitional(godan):
     o_stem_kana, o_stem_romaji = get_godan_o_stem(godan)
-    conjugated_kana = o_stem_kana + u"う"
+    conjugated_kana = o_stem_kana + "う"
     conjugated_romaji = o_stem_romaji + "u"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_godan_polite_volitional(godan):
     i_stem_kana, i_stem_romaji = get_godan_i_stem(godan)
-    conjugated_kana = i_stem_kana + u"ましょう"
+    conjugated_kana = i_stem_kana + "ましょう"
     conjugated_romaji = i_stem_romaji + "mashou"
     return conjugated_kana, conjugated_romaji
 
@@ -347,14 +347,14 @@ def conjugate_godan_plain_imperative(godan):
 
 def conjugate_godan_polite_imperative(godan):
     i_stem_kana, i_stem_romaji = get_godan_i_stem(godan)
-    conjugated_kana = i_stem_kana + u"なさい"
+    conjugated_kana = i_stem_kana + "なさい"
     conjugated_romaji = i_stem_romaji + "nasai"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_godan_polite_imperative_negative(godan):
     i_stem_kana, i_stem_romaji = get_godan_i_stem(godan)
-    conjugated_kana = i_stem_kana + u"なさるな"
+    conjugated_kana = i_stem_kana + "なさるな"
     conjugated_romaji = i_stem_romaji + "nasaruna"
     return conjugated_kana, conjugated_romaji
 
@@ -375,14 +375,14 @@ if __name__ == "__main__":
     ]
 
     conjugated_mappings = OrderedDict({})
-    for k in jm_dict.keys():
+    for k in list(jm_dict.keys()):
         if jm_dict[k]["w_type"] == "godan verb":
             set_global_godan(kanji_to_romaji(k), kanji_to_romaji(k[-1]))
             for c_func in conjugator_funcs:
                 ck, cr = c_func(k)
                 # assume first is a more common reading and second/others will have alt readings
                 if ck not in conjugated_mappings:
-                    if "conjugate" in c_func.func_name or "get_godan_e_stem" == c_func.func_name:
+                    if "conjugate" in c_func.__name__ or "get_godan_e_stem" == c_func.__name__:
                         conjugated_mappings[ck] = {
                             "romaji": cr,
                             "w_type": "conjugated godan verb"

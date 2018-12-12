@@ -5,7 +5,7 @@ from kanji_to_romaji.kanji_to_romaji_module import kanji_to_romaji
 
 class TestHiraganaRomajiTranslation(unittest.TestCase):
     def setUp(self):
-        print "\nStarting " + self.__module__ + ": " + self._testMethodName
+        print("\nStarting " + self.__module__ + ": " + self._testMethodName)
 
     def test_brackets(self):
         d = {
@@ -104,7 +104,7 @@ class TestHiraganaRomajiTranslation(unittest.TestCase):
             "｝": "}",
             "～": "~"
         }
-        for k in d.keys():
+        for k in list(d.keys()):
             self.assertEqual(kanji_to_romaji(k), d[k])
             self.assertTrue(ord(kanji_to_romaji(k)) < 127)
 

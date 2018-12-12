@@ -135,7 +135,7 @@ def main():
                         except IndexError:
                             if k_.text in auto_jm_dict:
                                 del auto_jm_dict[k_.text]
-                                print k_.text
+                                print(k_.text)
 
                     else:
                         try:
@@ -147,7 +147,7 @@ def main():
                         except IndexError:
                             if k_.text in auto_jm_dict:
                                 del auto_jm_dict[k_.text]
-                                print k_.text
+                                print(k_.text)
 
     return auto_jm_dict
 
@@ -155,8 +155,8 @@ def main():
 if __name__ == "__main__":
     ajd = main()
 
-    del ajd[u"々"]
-    del ajd[u"今日は"]
+    del ajd["々"]
+    del ajd["今日は"]
 
     items_to_delete = {}
     mapping_flist = ["full_and_half_width_latin.json", "typographic_misc.json"]
@@ -164,14 +164,14 @@ if __name__ == "__main__":
         with open(os.path.join(JP_MAPPINGS_PATH, f)) as reader:
             items_to_delete.update(json.load(reader))
 
-    for k in items_to_delete.keys():
+    for k in list(items_to_delete.keys()):
         if k in ajd:
             del ajd[k]
 
-    for k in ajd.keys():
+    for k in list(ajd.keys()):
         del ajd[k]["freq"]
 
-    ordered_kanji_dict = OrderedDict(sorted(ajd.items(),
+    ordered_kanji_dict = OrderedDict(sorted(list(ajd.items()),
                                             key=lambda item: (len(item[0]), item[0]), reverse=True))
     okd_str = json.dumps(ordered_kanji_dict, indent=2, ensure_ascii=False, encoding="utf-8", separators=(',', ': '))
     with open(os.path.join(JP_MAPPINGS_PATH, "jm_dict_autod_kanji.json"), 'w') as writer:

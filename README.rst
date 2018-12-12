@@ -1,6 +1,8 @@
 Kanji\_to\_Romaji
 =================
 
+| Converted from Python2 to Python3 using the 2to3 utility.
+
 | Formerly kana\_to\_romaji
 | *Tries* to translate Kanji to Romaji with the help of `JMdict`_
 | Some typograhic characters are also translated since one of the

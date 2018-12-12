@@ -16,15 +16,15 @@ from kanji_to_romaji.models import Particle
 PATH_TO_MODULE = os.path.dirname(__file__)
 JP_MAPPINGS_PATH = os.path.join(PATH_TO_MODULE, "jp_mappings")
 
-hiragana_iter_mark = u"ゝ"
-hiragana_voiced_iter_mark = u"ゞ"
-katakana_iter_mark = u"ヽ"
-katakana_voiced_iter_mark = u"ヾ"
-kanji_iteration_mark = u"々"
+hiragana_iter_mark = "ゝ"
+hiragana_voiced_iter_mark = "ゞ"
+katakana_iter_mark = "ヽ"
+katakana_voiced_iter_mark = "ヾ"
+kanji_iteration_mark = "々"
 
-hirgana_soukon_unicode_char = u"っ"
-katakana_soukon_unicode_char = u"ッ"
-katakana_long_vowel_mark = u"ー"
+hirgana_soukon_unicode_char = "っ"
+katakana_soukon_unicode_char = "ッ"
+katakana_long_vowel_mark = "ー"
 
 
 def load_kana_mappings_dict():
@@ -62,7 +62,7 @@ def load_kanji_mappings_dict():
         if os.path.splitext(f)[1] == ".json" and "kanji" in f:
             with open(os.path.join(JP_MAPPINGS_PATH, f)) as data_file:
                 data_file_dict = json.load(data_file)
-                for k in data_file_dict.keys():
+                for k in list(data_file_dict.keys()):
                     if k in kanji_romaji_mapping and \
                                     data_file_dict[k]["w_type"] != kanji_romaji_mapping[k]["w_type"]:
                         # if "other_readings" in kanji_romaji_mapping[k] and \
@@ -91,12 +91,12 @@ def _convert_hira_kata_char(hira_or_kata_char, h_to_k=True):
         suffix_offset = 6
     else:
         suffix_offset = -6
-    unicode_second_last_char = list(hira_or_kata_char.encode("unicode_escape"))[-2]
+    unicode_second_last_char = list( hira_or_kata_char.encode("unicode_escape").decode() )[-2]
     suffix = hex(int(unicode_second_last_char, 16) + suffix_offset)
-    char_list = list(hira_or_kata_char.encode("unicode_escape"))
+    char_list = list( hira_or_kata_char.encode("unicode_escape").decode() )
     char_list[-2] = suffix[-1]
-    result_char = "".join(char_list).decode('unicode-escape').encode('utf-8')
-    return result_char
+    result_char = "".join(char_list)
+    return result_char.encode().decode("unicode_escape")
 
 
 def convert_hiragana_to_katakana(hiragana):
@@ -106,8 +106,8 @@ def convert_hiragana_to_katakana(hiragana):
         if is_hiragana(c) or c in [hiragana_iter_mark, hiragana_voiced_iter_mark, hirgana_soukon_unicode_char]:
             converted_str += _convert_hira_kata_char(c)
         else:
-            converted_str += c.encode('utf-8')
-    return converted_str.decode("utf-8")
+            converted_str += c
+    return converted_str
 
 
 def convert_katakana_to_hiragana(katakana):
@@ -118,28 +118,28 @@ def convert_katakana_to_hiragana(katakana):
                                    katakana_soukon_unicode_char]:
             converted_str += _convert_hira_kata_char(c, h_to_k=False)
         else:
-            converted_str += c.encode('utf-8')
-    return converted_str.decode("utf-8")
+            converted_str += c
+    return converted_str
 
 
 def is_hiragana(c):
-    hiragana_starting_unicode = u"\u3041"
-    hiragana_ending_unicode = u"\u3096"
+    hiragana_starting_unicode = "\u3041"
+    hiragana_ending_unicode = "\u3096"
     return c not in [hiragana_iter_mark, hiragana_voiced_iter_mark, hirgana_soukon_unicode_char] and \
         hiragana_starting_unicode <= c <= hiragana_ending_unicode
 
 
 def is_katakana(c):
-    katakana_starting_unicode = u"\u30A1"
-    katakana_ending_unicode = u"\u30F6"
+    katakana_starting_unicode = "\u30A1"
+    katakana_ending_unicode = "\u30F6"
     return c not in [katakana_iter_mark, katakana_voiced_iter_mark,
                      katakana_soukon_unicode_char, katakana_long_vowel_mark] and \
         katakana_starting_unicode <= c <= katakana_ending_unicode
 
 
 def is_kanji(c):
-    cjk_start_range = u"\u4E00"
-    cjk_end_range = u"\u9FD5"
+    cjk_start_range = "\u4E00"
+    cjk_end_range = "\u9FD5"
     if isinstance(c, KanjiBlock):
         return True
     else:
@@ -199,14 +199,14 @@ def translate_particles(kana_list):
         """
         return isinstance(prev_c_, Particle) and prev_c_ in valid_prev_particles
 
-    no_hira_char = u"\u306E"
-    ha_hira_char = u"\u306F"
-    he_hira_char = u"\u3078"
-    to_hira_char = u"\u3068"
-    ni_hira_char = u"\u306B"
-    de_hira_char = u"\u3067"
-    mo_hira_char = u"\u3082"
-    ga_hira_char = u"\u304C"
+    no_hira_char = "\u306E"
+    ha_hira_char = "\u306F"
+    he_hira_char = "\u3078"
+    to_hira_char = "\u3068"
+    ni_hira_char = "\u306B"
+    de_hira_char = "\u3067"
+    mo_hira_char = "\u3082"
+    ga_hira_char = "\u304C"
 
     no_prtcle = Particle("no")
     wa_prtcle = Particle("wa")
@@ -330,24 +330,24 @@ def check_for_verb_stem_ending(kana_list, curr_chars, start_pos, char_len):
     :return: ending kanji, ending romaji; both will be None if ending not found
     """
     endings = OrderedDict({})
-    endings[u"ませんでした"] = "masen deshita"
-    endings[u"ませんで"] = "masende"
-    endings[u"なさるな"] = "nasaruna"
-    endings[u"なかった"] = "nakatta"
-    endings[u"れて"] = "rete"
-    endings[u"ましょう"] = "mashou"
-    endings[u"ました"] = "mashita"
-    endings[u"まして"] = "mashite"
-    endings[u"ません"] = "masen"
-    endings[u"ないで"] = "naide"
-    endings[u"なさい"] = "nasai"
-    endings[u"ます"] = "masu"
-    endings[u"よう"] = "you"  # ichidan
-    endings[u"ない"] = "nai"
-    endings[u"た"] = "ta"  # ichidan
-    endings[u"て"] = "te"  # ichidan
-    endings[u"ろ"] = "ro"  # ichidan
-    endings[u"う"] = "u"
+    endings["ませんでした"] = "masen deshita"
+    endings["ませんで"] = "masende"
+    endings["なさるな"] = "nasaruna"
+    endings["なかった"] = "nakatta"
+    endings["れて"] = "rete"
+    endings["ましょう"] = "mashou"
+    endings["ました"] = "mashita"
+    endings["まして"] = "mashite"
+    endings["ません"] = "masen"
+    endings["ないで"] = "naide"
+    endings["なさい"] = "nasai"
+    endings["ます"] = "masu"
+    endings["よう"] = "you"  # ichidan
+    endings["ない"] = "nai"
+    endings["た"] = "ta"  # ichidan
+    endings["て"] = "te"  # ichidan
+    endings["ろ"] = "ro"  # ichidan
+    endings["う"] = "u"
 
     dict_entry = None
 
@@ -367,7 +367,7 @@ def check_for_verb_stem_ending(kana_list, curr_chars, start_pos, char_len):
     e_k = None
     e_r = None
     if dict_entry is not None:
-        for e in endings.keys():
+        for e in list(endings.keys()):
             possible_conj = curr_chars + e
             actual_conj = "".join(kana_list[start_pos: (start_pos + char_len + len(e))])
             if possible_conj == actual_conj:
@@ -391,7 +391,7 @@ def has_non_verb_stem_reading(curr_chars):
 
     elif "other_readings" in UnicodeRomajiMapping.kanji_mapping[curr_chars]:
         if any(["verb stem" not in ork
-                for ork in UnicodeRomajiMapping.kanji_mapping[curr_chars]["other_readings"].keys()]):
+                for ork in list(UnicodeRomajiMapping.kanji_mapping[curr_chars]["other_readings"].keys())]):
             res = True
 
     return res
@@ -407,7 +407,7 @@ def get_verb_stem_romaji(verb_stem_kanji):
     if "verb stem" in UnicodeRomajiMapping.kanji_mapping[verb_stem_kanji]["w_type"]:
         romaji = UnicodeRomajiMapping.kanji_mapping[verb_stem_kanji]["romaji"]
     elif "other_readings" in UnicodeRomajiMapping.kanji_mapping[verb_stem_kanji]:
-        for k in UnicodeRomajiMapping.kanji_mapping[verb_stem_kanji]["other_readings"].keys():
+        for k in list(UnicodeRomajiMapping.kanji_mapping[verb_stem_kanji]["other_readings"].keys()):
             if "verb stem" in k:
                 romaji = UnicodeRomajiMapping.kanji_mapping[verb_stem_kanji]["other_readings"][k]
                 break
@@ -559,8 +559,8 @@ def translate_soukon_ch(kana):
     """
 
     prev_char = ""
-    hiragana_chi_unicode_char = u"\u3061"
-    katakana_chi_unicode_char = u"\u30C1"
+    hiragana_chi_unicode_char = "\u3061"
+    katakana_chi_unicode_char = "\u30C1"
     partial_kana = kana
     for c in reversed(kana):
         if c == hirgana_soukon_unicode_char or c == katakana_soukon_unicode_char:  # assuming that soukon can't be last
@@ -572,14 +572,14 @@ def translate_soukon_ch(kana):
 
 def _translate_dakuten_equivalent_char(kana_char):
     dakuten_mapping = {
-        u"か": u"が", u"き": u"ぎ", u"く": u"ぐ", u"け": u"げ", u"こ": u"ご",
-        u"さ": u"ざ", u"し": u"じ", u"す": u"ず", u"せ": u"ぜ", u"そ": u"ぞ",
-        u"た": u"だ", u"ち": u"ぢ", u"つ": u"づ", u"て": u"で", u"と": u"ど",
-        u"は": u"ば", u"ひ": u"び", u"ふ": u"ぶ", u"へ": u"べ", u"ほ": u"ぼ",
-        u"タ": u"ダ", u"チ": u"ヂ", u"ツ": u"ヅ", u"テ": u"デ", u"ト": u"ド",
-        u"カ": u"ガ", u"キ": u"ギ", u"ク": u"グ", u"ケ": u"ゲ", u"コ": u"ゴ",
-        u"サ": u"ザ", u"シ": u"ジ", u"ス": u"ズ", u"セ": u"ゼ", u"ソ": u"ゾ",
-        u"ハ": u"バ", u"ヒ": u"ビ", u"フ": u"ブ", u"ヘ": u"ベ", u"ホ": u"ボ"
+        "か": "が", "き": "ぎ", "く": "ぐ", "け": "げ", "こ": "ご",
+        "さ": "ざ", "し": "じ", "す": "ず", "せ": "ぜ", "そ": "ぞ",
+        "た": "だ", "ち": "ぢ", "つ": "づ", "て": "で", "と": "ど",
+        "は": "ば", "ひ": "び", "ふ": "ぶ", "へ": "べ", "ほ": "ぼ",
+        "タ": "ダ", "チ": "ヂ", "ツ": "ヅ", "テ": "デ", "ト": "ド",
+        "カ": "ガ", "キ": "ギ", "ク": "グ", "ケ": "ゲ", "コ": "ゴ",
+        "サ": "ザ", "シ": "ジ", "ス": "ズ", "セ": "ゼ", "ソ": "ゾ",
+        "ハ": "バ", "ヒ": "ビ", "フ": "ブ", "ヘ": "ベ", "ホ": "ボ"
     }
 
     dakuten_equiv = ""
@@ -625,8 +625,6 @@ def translate_kana_iteration_mark(kana):
 
 
 def kanji_to_romaji(kana):
-    if type(kana) == str:
-        kana = kana.decode("utf-8")
     pk = translate_kana_iteration_mark(kana)
     pk = translate_soukon_ch(pk)
     pk_list = prep_kanji(pk)
@@ -635,12 +633,12 @@ def kanji_to_romaji(kana):
     pk = translate_to_romaji(pk)
     pk = translate_soukon(pk)
     r = translate_long_vowel(pk)
-    return r.encode("unicode_escape").replace("\\\\", "\\")
+    return r
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        print kanji_to_romaji(("".join(sys.argv[1:])).decode('unicode-escape'))
+        print(kanji_to_romaji(("".join(sys.argv[1:])).decode('unicode-escape')))
     else:
-        print "Missing Kanji/Kana character argument\n" \
-              "e.g: kanji_to_romaji.py \u30D2"
+        print("Missing Kanji/Kana character argument\n" \
+              "e.g: kanji_to_romaji.py \\u30D2")

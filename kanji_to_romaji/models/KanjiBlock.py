@@ -16,7 +16,7 @@ class KanjiBlock(str):
         if "other_readings" in kanji_dict:
             obj.w_type = [kanji_dict["w_type"]]
             obj.w_type.extend(
-                [k for k in kanji_dict["other_readings"].keys()]
+                [k for k in list(kanji_dict["other_readings"].keys())]
             )
         else:
             obj.w_type = kanji_dict["w_type"]

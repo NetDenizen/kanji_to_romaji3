@@ -17,67 +17,67 @@ def set_global_ichidan(isk, isr):
 
 
 def conjugate_ichidan_polite_present_affirmative():
-    conjugated_kana = ichidan_stem_kana + u"ます"
+    conjugated_kana = ichidan_stem_kana + "ます"
     conjugated_romaji = ichidan_stem_romaji + "masu"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_plain_negative():
-    conjugated_kana = ichidan_stem_kana + u"ない"
+    conjugated_kana = ichidan_stem_kana + "ない"
     conjugated_romaji = ichidan_stem_romaji + "nai"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_polite_present_negative():
-    conjugated_kana = ichidan_stem_kana + u"ません"
+    conjugated_kana = ichidan_stem_kana + "ません"
     conjugated_romaji = ichidan_stem_romaji + "masen"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_plain_past():
-    conjugated_kana = ichidan_stem_kana + u"た"
+    conjugated_kana = ichidan_stem_kana + "た"
     conjugated_romaji = ichidan_stem_romaji + "ta"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_polite_past():
-    conjugated_kana = ichidan_stem_kana + u"ました"
+    conjugated_kana = ichidan_stem_kana + "ました"
     conjugated_romaji = ichidan_stem_romaji + "mashita"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_plain_past_negative():
-    conjugated_kana = ichidan_stem_kana + u"なかった"
+    conjugated_kana = ichidan_stem_kana + "なかった"
     conjugated_romaji = ichidan_stem_romaji + "nakatta"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_polite_past_negative():
-    conjugated_kana = ichidan_stem_kana + u"ませんでした"
+    conjugated_kana = ichidan_stem_kana + "ませんでした"
     conjugated_romaji = ichidan_stem_romaji + "masen deshita"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_plain_te_form():
-    conjugated_kana = ichidan_stem_kana + u"て"
+    conjugated_kana = ichidan_stem_kana + "て"
     conjugated_romaji = ichidan_stem_romaji + "te"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_polite_te_form():
-    conjugated_kana = ichidan_stem_kana + u"まして"
+    conjugated_kana = ichidan_stem_kana + "まして"
     conjugated_romaji = ichidan_stem_romaji + "mashite"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_plain_te_form_negative():
-    conjugated_kana = ichidan_stem_kana + u"ないで"
+    conjugated_kana = ichidan_stem_kana + "ないで"
     conjugated_romaji = ichidan_stem_romaji + "naide"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_polite_te_form_negative():
-    conjugated_kana = ichidan_stem_kana + u"ませんで"
+    conjugated_kana = ichidan_stem_kana + "ませんで"
     conjugated_romaji = ichidan_stem_romaji + "masende"
     return conjugated_kana, conjugated_romaji
 
@@ -85,19 +85,19 @@ def conjugate_ichidan_polite_te_form_negative():
 
 
 def conjugate_ichidan_plain_volitional():
-    conjugated_kana = ichidan_stem_kana + u"よう"
+    conjugated_kana = ichidan_stem_kana + "よう"
     conjugated_romaji = ichidan_stem_romaji + "you"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_polite_volitional():
-    conjugated_kana = ichidan_stem_kana + u"ましょう"
+    conjugated_kana = ichidan_stem_kana + "ましょう"
     conjugated_romaji = ichidan_stem_romaji + "mashou"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_plain_imperative():
-    conjugated_kana = ichidan_stem_kana + u"ろ"
+    conjugated_kana = ichidan_stem_kana + "ろ"
     conjugated_romaji = ichidan_stem_romaji + "ro"
     return conjugated_kana, conjugated_romaji
 
@@ -105,13 +105,13 @@ def conjugate_ichidan_plain_imperative():
 # plain imperative negative is dictionary form + na; no need to conjugate
 
 def conjugate_ichidan_polite_imperative():
-    conjugated_kana = ichidan_stem_kana + u"なさい"
+    conjugated_kana = ichidan_stem_kana + "なさい"
     conjugated_romaji = ichidan_stem_romaji + "nasai"
     return conjugated_kana, conjugated_romaji
 
 
 def conjugate_ichidan_polite_imperative_negative():
-    conjugated_kana = ichidan_stem_kana + u"なさるな"
+    conjugated_kana = ichidan_stem_kana + "なさるな"
     conjugated_romaji = ichidan_stem_romaji + "nasaruna"
     return conjugated_kana, conjugated_romaji
 
@@ -122,7 +122,7 @@ if __name__ == "__main__":
         jm_dict = json.load(data_file)
 
     conjugated_mappings = OrderedDict({})
-    for k in jm_dict.keys():
+    for k in list(jm_dict.keys()):
         if jm_dict[k]["w_type"] == "ichidan verb":
             conjugated_mappings[k[:-1]] = {
                 "romaji": kanji_to_romaji(k)[:-2],
