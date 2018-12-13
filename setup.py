@@ -16,9 +16,9 @@ setup(
     package_data={'kanji_to_romaji': ['jp_mappings/*.json']},
     url='https://github.com/rcamba/kanji_to_romaji',
     license='Mozilla Public License Version 2.0',
-    author='Robert Camba',
-    author_email='rcamba@users.noreply.github.com',
-    description='Try to translate Kanji to Romaji.',
+    author='Robert Camba, NetDenizen',
+    author_email='rcamba@users.noreply.github.com, NetDenizen@users.noreply.github.com',
+    description='Try to translate Kanji to Romaji. Python3 port and refinements by NetDenizen.',
     extras_require={
         'fasterjson': ['simplejson>=3.10.0'],
     },

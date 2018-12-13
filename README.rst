@@ -2,6 +2,7 @@ Kanji\_to\_Romaji
 =================
 
 | Converted from Python2 to Python3, primarily using the 2to3 utility.
+| The original can be found here: __ https://github.com/rcamba/kanji_to_romaji
 
 | Formerly kana\_to\_romaji
 | *Tries* to translate Kanji to Romaji with the help of `JMdict`_
@@ -11,10 +12,10 @@ Kanji\_to\_Romaji
 Installation
 ------------
 
-| ``pip install kanji_to_romaji``
-| or if pip is not available:
-| ``git clone https://github.com/rcamba/kanji_to_romaji``
+| ``git clone https://github.com/NetDenizen/kanji_to_romaji3``
 | ``install.bat``
+| Or if you have Linux:
+| ``./install.sh``
 
 
 Usage
@@ -26,19 +27,14 @@ you have your python’s script folder in your environment variables
 | > ktr.py 友達に会いました
 | tomodachi ni aimashita
 
-| Although Windows cmd doesn’t seem to natively support unicode
-  characters so you can use unicode escaped strings if you’d like…
-| > ktr.py \\u53cb\\u9054\\u306b\\u4f1a\\u3044\\u307e\\u3057\\u305f
-| tomodachi ni aimashita
-
 The more common usage will probably to be used in another program:
 
 ::
 
     from kanji_to_romaji import kanji_to_romaji
-    print kanji_to_romaji(u"友達に会いました")
+    print kanji_to_romaji("友達に会いました")
 
-Argument must be in unicode
+Argument must be in Unicode
 
 More examples
 -------------
@@ -48,7 +44,7 @@ More examples
 | 友達に会いました: tomodachi ni aimashita
 | 車には一人分の空きがあった: kuruma ni wa hitoribun no aki ga atta
 | bl∞dy☆: bl dy
-| 乷: \\u4e77 (not in Kanji unicode range)
+| 乷: 乷 (not in Kanji unicode range)
 
 | See ``tests\test_kanji.py`` for more examples
 | **Note**: The particles は (ha/wa) or へ (he/e) won’t always be
