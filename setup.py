@@ -10,7 +10,7 @@ except IOError:
     long_description = ""
 
 setup(
-    name='Kanji_to_Romaji',
+    name='Kanji_to_Romaji 3',
     version='1.0.0',
     packages=['kanji_to_romaji', 'kanji_to_romaji/models'],
     package_data={'kanji_to_romaji': ['jp_mappings/*.json']},
