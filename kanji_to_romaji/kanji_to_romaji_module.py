@@ -31,7 +31,7 @@ def load_kana_mappings_dict():
     kana_romaji_mapping = {}
     for f in os.listdir(JP_MAPPINGS_PATH):
         if os.path.splitext(f)[1] == ".json" and "kanji" not in f:
-            with open(os.path.join(JP_MAPPINGS_PATH, f)) as data_file:
+            with open(os.path.join(JP_MAPPINGS_PATH, f), encoding='utf-8') as data_file:
                 kana_romaji_mapping.update(json.load(data_file))
     return kana_romaji_mapping
 
@@ -60,7 +60,7 @@ def load_kanji_mappings_dict():
 
     for f in f_list:
         if os.path.splitext(f)[1] == ".json" and "kanji" in f:
-            with open(os.path.join(JP_MAPPINGS_PATH, f)) as data_file:
+            with open(os.path.join(JP_MAPPINGS_PATH, f), encoding='utf-8') as data_file:
                 data_file_dict = json.load(data_file)
                 for k in list(data_file_dict.keys()):
                     if k in kanji_romaji_mapping and \
